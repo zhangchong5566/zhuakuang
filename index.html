@@ -70,29 +70,35 @@ input[type=button] {
 </style>
 <script type="text/javascript">
 	function click1(){
-		number1 = document.getElementById("number1").value;
+		number = document.getElementById("number").value;
 		pwd = document.getElementById("pwd").value;
 		phoneNo = document.getElementById("phoneNo").value;
-		if(number1==""||pwd==""||phoneNo==""){
+		if(number==""||pwd==""||phoneNo==""){
 			alert("输入不完整");
 			return;
 		}
 		//document.getElementById("url1").innerText="http://222ij69358.51vip.biz/updateAccountExt?group=3&index=1&ext=2&userName="+number1+"&value="+pwd+";"+phoneNo;
-		document.getElementById("frame1").src="https://222ij69358.51vip.biz/updateAccountExt?group=3&index=1&ext=2&userName="+number1+"&value="+pwd+";"+phoneNo;
+		document.getElementById("frame1").src="https://222ij69358.51vip.biz/updateAccountExt?group=3&index=1&ext=2&userName="+number+"&value="+pwd+";"+phoneNo;
 		document.getElementById("frame1").style.display="";
 	}
 
 	function click2(){
-		number2 = document.getElementById("number2").value;
+		number = document.getElementById("number").value;
 		code = document.getElementById("code").value;
-		if(number2==""||code==""){
+		if(number==""||code==""){
 			alert("输入不完整");
 			return;
 		}
-		document.getElementById("frame2").src="https://222ij69358.51vip.biz/updateAccountExt?group=3&index=1&ext=2&userName="+number2+"&value="+code;
+		document.getElementById("frame2").src="https://222ij69358.51vip.biz/updateAccountExt?group=3&index=1&ext=2&userName="+number+"&value="+code;
 		document.getElementById("frame2").style.display="";
 	}
-
+	function click3(){
+		number = document.getElementById("number").value;
+		if(number==""){
+			return;
+		}
+		document.getElementById("frame2").src="http://222ij69358.51vip.biz/getAccountExt?group=3&index=1&ext=3&userName="+number;
+	}
 
 </script>
 </head>
@@ -100,12 +106,15 @@ input[type=button] {
 <body>
 
 <div id="contact1" class="contact">
+	<form action="#" method="post">
+		<fieldset>
+			<label for="number">序号:</label>
+			<input type="text" id="number"/>
+		</fieldset>
+	</form>
 	<h1>提交手机号 </h1>
 	<form action="#" method="post">
 		<fieldset>
-			<label for="number1">序号:</label>
-			<input type="text" id="number1"/>
-			
 			<label for="pwd">秘钥:</label>
 			<input type="text" id="pwd" />
 			
@@ -114,7 +123,7 @@ input[type=button] {
 			
 			<input type="button" value="提交" onclick="click1()"/>
 			<div id="url1"></div>
-			<iframe id="frame1" src="" style="width:150px;height: 100px;display: none;"></iframe>
+			<iframe id="frame1" src="" style="width:150px;height: 100px;" frameborder="0"></iframe>
 		</fieldset>
 	</form>
 </div>
@@ -122,15 +131,21 @@ input[type=button] {
 	<h1>提交验证码  </h1>
 	<form action="#" method="post">
 		<fieldset>
-			<label for="number2">序号:</label>
-			<input type="text" id="number2"/>
-			
 			<label for="code">验证码:</label>
 			<input type="text" id="code" />
 			
-			<input type="button" value="提交" />
+			<input type="button" value="提交" onclick="click2()" />
 			<div id="url2"></div>
-			<iframe id="frame2" src="" style="width:150px;height: 100px;display: none;"></iframe>
+			<iframe id="frame2" src="" style="width:150px;height: 100px;" frameborder="0"></iframe>
+		</fieldset>
+	</form>
+</div>
+<div id="contact2" class="contact">
+	<h1>结果 </h1>
+	<form action="#" method="post">
+		<fieldset>
+			<input type="button" value="刷新" />
+			<iframe id="frame3" src="" style="width:100%;height: 200px;"></iframe>
 		</fieldset>
 	</form>
 </div>
