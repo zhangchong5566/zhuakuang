@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<meta charset="utf-8" />
+<title>提交账号</title>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style type="text/css">
+body, div, h1, form, fieldset, input, textarea {
+	margin: 0; padding: 0; border: 0; outline: none;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	background: #728eaa;
+	font-family: sans-serif; 
+}
+
+.contact {
+	width: 430px; margin: 60px auto; padding: 60px 30px;
+	background: #c9d0de; border: 1px solid #e1e1e1;
+	-moz-box-shadow: 0px 0px 8px #444;
+	-webkit-box-shadow: 0px 0px 8px #444;
+}
+
+h1 {
+	font-size: 35px; color: #445668; text-transform: uppercase;
+	text-align: center; margin: 0 0 35px 0; text-shadow: 0px 1px 0px #f2f2f2;
+}
+
+label {
+	float: left; clear: left; margin: 11px 20px 0 0; width: 95px;
+	text-align: right; font-size: 16px; color: #445668; 
+	text-transform: uppercase; text-shadow: 0px 1px 0px #f2f2f2;
+}
+
+input {
+	width: 260px; height: 35px; padding: 5px 20px 0px 20px; margin: 0 0 20px 0; 
+	background: #5E768D;
+	background: -moz-linear-gradient(top, #546A7F 0%, #5E768D 20%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#546A7F), color-stop(20%,#5E768D)); /* webkit */
+	border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
+	-moz-box-shadow: 0px 1px 0px #f2f2f2;-webkit-box-shadow: 0px 1px 0px #f2f2f2;
+	font-family: sans-serif; font-size: 16px; color: #f2f2f2; text-transform: uppercase; text-shadow: 0px -1px 0px #334f71; 
+}
+	input::-webkit-input-placeholder  {
+    	color: #a1b2c3; text-shadow: 0px -1px 0px #38506b;  
+	}
+	input:-moz-placeholder {
+	    color: #a1b2c3; text-shadow: 0px -1px 0px #38506b; 
+	}
+
+
+input:focus, textarea:focus {
+	background: #728eaa;
+	background: -moz-linear-gradient(top, #668099 0%, #728eaa 20%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#668099), color-stop(20%,#728eaa)); /* webkit */
+}
+
+input[type=button] {
+	width: 185px; height: 52px; float: right; padding: 10px 15px; margin: 0 15px 0 0;
+	-moz-box-shadow: 0px 0px 5px #999;-webkit-box-shadow: 0px 0px 5px #999;
+	border: 1px solid #556f8c;
+	background: -moz-linear-gradient(top, #718DA9 0%, #415D79 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#718DA9), color-stop(100%,#415D79)); /* webkit */
+	cursor: pointer;
+}
+</style>
+<script type="text/javascript">
+	function click1(){
+		number = document.getElementById("number").value;
+		pwd = document.getElementById("pwd").value;
+		phoneNo = document.getElementById("phoneNo").value;
+		if(number==""||pwd==""||phoneNo==""){
+			alert("输入不完整");
+			return;
+		}
+		//document.getElementById("url1").innerText="http://222ij69358.51vip.biz/updateAccountExt?group=3&index=1&ext=2&userName="+number1+"&value="+pwd+";"+phoneNo;
+		document.getElementById("frame1").src="https://222ij69358.51vip.biz/updateAccountExt?group=7&index=1&ext=2&userName="+number+"&value="+pwd+";"+phoneNo;
+		document.getElementById("frame1").style.display="";
+	}
+
+	function click2(){
+		number = document.getElementById("number").value;
+		code = document.getElementById("code").value;
+		if(number==""||code==""){
+			alert("输入不完整");
+			return;
+		}
+		document.getElementById("frame2").src="https://222ij69358.51vip.biz/updateAccountExt?group=7&index=1&ext=2&userName="+number+"&value="+code;
+		document.getElementById("frame2").style.display="";
+		document.getElementById("frame3").src="https://222ij69358.51vip.biz/getAccountExt?group=7&index=1&ext=3&userName="+number;
+	}
+	function click3(){
+		number = document.getElementById("number").value;
+		if(number==""){
+			return;
+		}
+		document.getElementById("frame3").src="https://222ij69358.51vip.biz/getAccountExt?group=7&index=1&ext=3&userName="+number;
+	}
+
+	function getNum() {
+
+		iframe = document.getElementById("frame4");
+		iframe.src="https://222ij69358.51vip.biz/getNextAccount?group=7&index=1";
+		var num = "";
+		if (iframe.attachEvent){
+			console.log("11111");
+			iframe.attachEvent("onload", function(){
+				num = document.getElementById("frame4").contentWindow.document.body.innerHTML;
+				console.log("11111, num="+num);
+			});
+		} else {
+			console.log("22222");
+			iframe.onload = function(){
+				num = $('#frame4').contents().text();
+				console.log("22222, num="+num);
+			};
+		}
+	}
+
+	function sleep(n) {
+        var start = new Date().getTime();
+        //  console.log('休眠前：' + start);
+        while (true) {
+            if (new Date().getTime() - start > n) {
+                break;
+            }
+        }
+        // console.log('休眠后：' + new Date().getTime());
+    }
+</script>
+</head>
+
+<body>
+序号：<iframe id="frame4" src="" style="width:100%;height: 50px;"></iframe>
+<input type="button" value="读取序号" onclick="getNum()"/>
+<div id="contact1" class="contact">
+	<h1>提交手机号 </h1>
+	<form action="#" method="post">
+		<fieldset>
+			<label for="pwd">秘钥:</label>
+			<input type="text" id="pwd" />
+			
+			<label for="phoneNo">手机号:</label>
+			<input type="text" id="phoneNo"/>
+			
+			<input type="button" value="提交并等待验证码" onclick="click1()"/>
+			<div id="url1"></div>
+			<iframe id="frame1" src="" style="width:150px;height: 100px;" frameborder="0"></iframe>
+		</fieldset>
+	</form>
+</div>
+<div id="contact2" class="contact">
+	<h1>提交验证码  </h1>
+	<form action="#" method="post">
+		<fieldset>
+			<label for="code">验证码:</label>
+			<input type="text" id="code" />
+			
+			<input type="button" value="提交" onclick="click2()" />
+			<div id="url2"></div>
+			<iframe id="frame2" src="" style="width:150px;height: 100px;" frameborder="0"></iframe>
+		</fieldset>
+	</form>
+</div>
+<div id="contact3" class="contact">
+	<h1>结果 </h1>
+	<form action="#" method="post">
+		<fieldset>
+			<iframe id="frame3" src="" style="width:100%;height: 200px;"></iframe>
+			<input type="button" value="刷新" onclick="click3()" style="width: 100px; height: 30px; float: right; padding: 5px 15px; margin: 0 1px 0 0;"/>
+		</fieldset>
+	</form>
+</div>
+
+</body>
+</html>
